@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> repo </title>
+    <meta charset="utf8" />
+    <script src="vue/vue-2.6.11-dev.js"></script>
+</head>
+
+<body>
+    <div id="data_area">
+        <div v-for="srcnode in srclist">
+            <div><h3>{{ srcnode[0] }}</h3></div>
+            <table border="1px">
+                <tr v-for="address in srcnode[1]">
+                    <td>{{ address[0] }}</td>
+                    <td>{{ address[1] }}</td>
+                    <td>{{ address[2] }}</td>
+                    <td>{{ address[3] }}</td>
+                </tr>
+            </table><br>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#data_area',
+        data: {
+            srclist:
+                [
+                    ['vue',
+                        [
+                            ['v2.6.11', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js', 'cdn', 'dev'],
+                        ]
+                    ],
+                    ['jquery',
+                        [
+                            ['v1.10.2', 'https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js', 'cdn', 'min'],
+                            ['v2.1.4', 'https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js', 'cdn', 'min'],
+                            ['v2.0.2', 'https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js', 'cdn', 'min'],
+                            ['v2.0.2', 'https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js', 'cdn', 'min'],
+                            ['v1.10.2', 'https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', 'cdn', 'min'],
+                            ['v1.9.0', 'https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js', 'cdn', 'min']
+                        ]
+                    ]
+                ]
+        }
+    });
+</script>
+</html>
