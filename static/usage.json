@@ -1,0 +1,47 @@
+{
+    "repos": [
+        {
+            "reponame": "vue",
+            "list": [
+                {
+                    "version": "v0.1",
+                    "usage": {
+                        "js": [],
+                        "css": []
+                    },
+                    "type": "local"
+                },
+                {
+                    "version": "v0.2",
+                    "usage": {
+                        "js": [],
+                        "css": []
+                    },
+                    "type": "local"
+                }
+            ]
+        },
+        {
+            "reponame": "jquery",
+            "list": [
+                {
+                    "version": "v0.1",
+                    "usage": {
+                        "js": [],
+                        "css": []
+                    },
+                    "type": "local"
+                },
+                {
+                    "version": "v0.2",
+                    "usage": {
+                        "js": [],
+                        "css": []
+                    },
+                    "type": "local"
+                }
+            ]
+        }
+    ],
+    "morekey": {}
+}

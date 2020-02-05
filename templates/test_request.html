@@ -1,0 +1,83 @@
+{% extends "template.html" %}
+
+{% block addition_css %}
+{% endblock %}
+
+{% block addition_js %}
+<script>
+    // axios.post("/test/postget",{ac:"aa"})
+    // .then(function(response){
+    //     console.log(response.data);
+    // },function(e){
+    //     console.log(e)
+    // });
+    $.post("/test/postget", { 'aaa': "aaa" }, function (result, status) {
+        console.log(result);
+        console.log(status);
+    });
+
+    function dropHandler(e) {
+        e.preventDefault()
+        let fileList = e.dataTransfer.files
+        if (fileList.length > 0) {
+            let formData = new FormData()
+            for (let i = 0; i < fileList.length; i++) {
+                // 检测文件名有没有空格
+                if (fileList[i].name.indexOf(' ') > -1) {
+                    message.error(fileList[i].name + '文件名称不能包含空格。')
+                    return false
+                }
+                // 判断大小
+                if (fileList[i].size / 1024 < 5000) {
+                    formData.append('attachment', fileList[i])
+                } else {
+                    message.error(fileList[i].name + '超过5M，无法发送文件。')
+                }
+            }
+            if (formData.getAll('attachment').length > 0) {
+                $axios.post('/api/file/save', formData).then(res => {
+                    if (res.status === 200) {
+                        console.log(res)
+                    }
+                })
+            }
+        }
+    }
+
+    // 拖放事件，获取位置
+    function dragoverHandler(e) {
+        e.preventDefault()
+    }
+</script>
+{% endblock %}
+
+{% block body %}
+
+<!-- <form action="/v2/Sticky/add" method="POST" role="form">
+    <legend>"/v2/Sticky/add"</legend>
+    <div class="form-group">
+        <input type="text" class="form-control" name="title" placeholder="Input field" value="this is title">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<form action="" method="POST" role="form">
+    <legend>Form title</legend>
+
+    <div class="form-group">
+        <label for="">label</label>
+        <input type="file" class="form-control" id="" placeholder="Input field">
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+
+<form action="/v2.1/file" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">
+</form>
+
+
+{% endblock %}
